@@ -24,4 +24,6 @@ public class player : MonoBehaviour
 
         rb2d.velocity = new Vector2(h * speed, v * speed);
     }
+
+
 }
