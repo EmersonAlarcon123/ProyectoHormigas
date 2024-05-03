@@ -4,26 +4,48 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
     private Rigidbody2D rb2d;
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 direction;
+    private Animator anim;
+
+    private void Awake()
     {
-        rb2d = GetComponent<Rigidbody2D>(); 
+        rb2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public Vector2 direccion
     {
-        move();
+        get 
+        {
+            return direction;
+        }
     }
-    public void move()
+    private void FixedUpdate()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        RUNN();
+    }
 
-        rb2d.velocity = new Vector2(h * speed, v * speed);
+    void RUNN()
+    {
+        float H = Input.GetAxisRaw("Horizontal");
+        float V = Input.GetAxisRaw("Vertical");
+        if (H != 0f || V != 0f)
+        {
+            direction = new Vector2(H, V).normalized;
+            anim.SetBool("semueve", true);
+        }
+        else 
+        {
+            anim.SetBool("semueve", false);
+        }
+        rb2d.velocity = new Vector2(H, V).normalized * speed;
+
+
     }
+
 
 
 }
