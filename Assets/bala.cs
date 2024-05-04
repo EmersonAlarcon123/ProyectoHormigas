@@ -18,7 +18,7 @@ public class bala : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
 
     {
-        if (other.CompareTag("Enemigo")){ }
+        if (other.CompareTag("enemy")){ }
     }
 }
 

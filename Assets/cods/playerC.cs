@@ -8,6 +8,11 @@ public class playerC : MonoBehaviour
 
     [SerializeField] private float velocidad;
     private Vector2 direccion;
+
+    Vector2 input;
+    float rotacion;
+    [SerializeField] private bool ismoving;
+    [SerializeField] private float anguloRotacion = 0.4f;
     
     // Start is called before the first frame update
     void Start()
@@ -31,6 +36,7 @@ public class playerC : MonoBehaviour
     void Update()
     {
         speed();
+       // dameRotacion();
     }
 
     void speed()
@@ -47,4 +53,26 @@ public class playerC : MonoBehaviour
         rb2d.velocity = new Vector2(h, V).normalized * velocidad;
 
     }
+   /* void dameRotacion()
+    {
+        Vector2 lookDirection = new Vector2(-input.x, input.y);
+        if(ismoving)
+        {
+            direccion.x = Mathf.Atan2(lookDirection.x,lookDirection.y)*Mathf.Rad2Deg;
+        }
+        if(rb2d.rotation<= -90 && rotacion <= -90)
+        {
+            rb2d.rotation += 360;
+            rb2d.rotation = Mathf.Lerp(rb2d.rotation, rotacion, anguloRotacion);
+        }
+        else if (rb2d.rotation >= 90 && rotacion <= -90)
+        {
+            rb2d.rotation -= 360;
+            rb2d.rotation = Mathf.Lerp(rb2d.rotation, rotacion, anguloRotacion);
+        }
+        else
+        {
+            rb2d.rotation = Mathf.Lerp(rb2d.rotation, rotacion, anguloRotacion);
+        }
+    }*/
 }
