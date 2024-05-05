@@ -214,6 +214,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation: 6
+  bulletPrefab: {fileID: 182669419730813289, guid: 89e6dc1726c7fa64eb04633ee550d6c0, type: 3}
+  shootP: {fileID: 1007746059}
+  timeforshoot: 0.05
+  timefornextshoot: 0
 --- !u!114 &257509092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,6 +650,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 84}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!4 &1007746059 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7876882069533804414, guid: c26738e8e5550834f84e926798e54009, type: 3}
+  m_PrefabInstance: {fileID: 2012915997654507308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1104774525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,6 +1017,14 @@ PrefabInstance:
     - target: {fileID: 5146556853310440286, guid: c26738e8e5550834f84e926798e54009, type: 3}
       propertyPath: m_Name
       value: Player_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7876882069533804414, guid: c26738e8e5550834f84e926798e54009, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.224
+      objectReference: {fileID: 0}
+    - target: {fileID: 7876882069533804414, guid: c26738e8e5550834f84e926798e54009, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.948
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
