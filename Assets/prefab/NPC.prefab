@@ -147,9 +147,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogo: {fileID: 8043276651869391284}
   lienadeDialogo:
-  - hola
-  - 'como estas '
-  - bien ?
+  - parece que el otro no lo logro , te explico rapido lo que tienes que hacer
+  - 'nutestro trabajo es recoger las sobras del comedor , esas cucarachas llegaron
+    y asalataron a las hormigas obreras , llega rapido al comedor y defiendelo hasta
+    que lleguen los refuerzos '
+  - esa arma es algo experimental , usa el click izquiero para disparar , muevete
+    con las teclas "A,W,S,D" , eso es todo lo demas a tu suerte no tenemos riempo
+    RAPIDO !!
   textoMostrar: {fileID: 0}
   texto: {fileID: 0}
 --- !u!1 &8043276651869391284

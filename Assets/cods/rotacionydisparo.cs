@@ -27,7 +27,7 @@ public class rotacionydisparo : MonoBehaviour
     }
     void shoot()
     {
-        if (Input.GetMouseButtonDown(0) && Time.time >= timefornextshoot)
+        if (Input.GetMouseButton(0) && Time.time >= timefornextshoot)
         {
             bala bullet = Instantiate(bulletPrefab,shootP.position,transform.rotation);
             bullet.proyectil(transform.up);

@@ -90,6 +90,10 @@ public class dialogoNPC : MonoBehaviour
         {
             estaCerca = false;
             dialogo.SetActive(false);
+
+            indicasiinicio = false;
+            textoMostrar.SetActive(false);
+            dialogo.SetActive(true);
         }
     }
 }
