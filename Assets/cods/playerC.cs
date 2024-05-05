@@ -12,7 +12,7 @@ public class playerC : MonoBehaviour
     Vector2 input;
     float rotacion;
     [SerializeField] private bool ismoving;
-    [SerializeField] private float anguloRotacion = 0.4f;
+    //[SerializeField] private float anguloRotacion = 0.4f;
     
     // Start is called before the first frame update
     void Start()

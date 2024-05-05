@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class vidajugador : MonoBehaviour
+public class enemyHeart : MonoBehaviour
 {
     [SerializeField] private float vida;
-    public Image barra;
-    [SerializeField] private float maxHP;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +14,16 @@ public class vidajugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        barra.fillAmount = vida/maxHP;
+        
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "bulletEnemy") 
+        if(collision.gameObject.tag == "bullet")
         {
             vida -= 1;
-            if (vida <= 0)
+            if(vida == 0)
             {
-                Time.timeScale = 0f;
+                Destroy(gameObject);
             }
         }
     }

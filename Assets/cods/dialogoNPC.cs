@@ -70,7 +70,7 @@ public class dialogoNPC : MonoBehaviour
         foreach (char ch in lienadeDialogo[linea])
         {
             texto.text += ch;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(timeForLinea);
         }
 
     }
@@ -93,7 +93,7 @@ public class dialogoNPC : MonoBehaviour
 
             indicasiinicio = false;
             textoMostrar.SetActive(false);
-            dialogo.SetActive(true);
+
         }
     }
 }
