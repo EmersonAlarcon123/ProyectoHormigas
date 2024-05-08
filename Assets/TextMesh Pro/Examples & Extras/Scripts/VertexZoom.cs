@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 
 namespace TMPro.Examples
@@ -25,13 +26,13 @@ namespace TMPro.Examples
         void OnEnable()
         {
             // Subscribe to event fired when text object has been regenerated.
-            TMPro_EventManager.TEXT_CHANGED_EVENT.Add(ON_TEXT_CHANGED);
+            TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
         }
 
         void OnDisable()
         {
             // UnSubscribe to event fired when text object has been regenerated.
-            TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(ON_TEXT_CHANGED);
+            TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
         }
 
 
@@ -41,9 +42,9 @@ namespace TMPro.Examples
         }
 
 
-        void ON_TEXT_CHANGED(Object obj)
+        void OnTextChanged(UnityEngine.Object obj)
         {
-            if (obj == m_TextComponent)
+            if (obj is TMP_Text text && text == m_TextComponent)
                 hasTextChanged = true;
         }
 
@@ -129,7 +130,7 @@ namespace TMPro.Examples
                     //Vector3 jitterOffset = new Vector3(Random.Range(-.25f, .25f), Random.Range(-.25f, .25f), 0);
 
                     // Determine the random scale change for each character.
-                    float randomScale = Random.Range(1f, 1.5f);
+                    float randomScale =UnityEngine.Random.Range(1f, 1.5f);
                     
                     // Add modified scale and index
                     modifiedCharScale.Add(randomScale);
@@ -150,8 +151,11 @@ namespace TMPro.Examples
                     destinationVertices[vertexIndex + 3] += offset;
 
                     // Restore Source UVS which have been modified by the sorting
-                    Vector2[] sourceUVs0 = cachedMeshInfoVertexData[materialIndex].uvs0;
-                    Vector2[] destinationUVs0 = textInfo.meshInfo[materialIndex].uvs0;
+                    Vector4[] sourceUVs0 = cachedMeshInfoVertexData[materialIndex].uvs0;
+                    Vector2[] destinationUVs0 = new Vector2[sourceUVs0.Length];
+
+                    Array.Copy(textInfo.meshInfo[materialIndex].uvs0, destinationUVs0, sourceUVs0.Length);
+
 
                     destinationUVs0[vertexIndex + 0] = sourceUVs0[vertexIndex + 0];
                     destinationUVs0[vertexIndex + 1] = sourceUVs0[vertexIndex + 1];
@@ -178,7 +182,7 @@ namespace TMPro.Examples
 
                     // Updated modified vertex attributes
                     textInfo.meshInfo[i].mesh.vertices = textInfo.meshInfo[i].vertices;
-                    textInfo.meshInfo[i].mesh.uv = textInfo.meshInfo[i].uvs0;
+                    textInfo.meshInfo[i].mesh.uv = textInfo.meshInfo[i].uvs0.Select(v => (Vector2)v).ToArray();
                     textInfo.meshInfo[i].mesh.colors32 = textInfo.meshInfo[i].colors32;
 
                     m_TextComponent.UpdateGeometry(textInfo.meshInfo[i].mesh, i);
